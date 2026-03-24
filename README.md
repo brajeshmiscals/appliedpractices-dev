@@ -21,4 +21,6 @@ Reference repo: https://github.com/brajeshmiscals/appliedpractices-dev
 
 9. Create a script (bash) to run this project from command line. 
 
+10. Run the script using ./runner.sh
+
 

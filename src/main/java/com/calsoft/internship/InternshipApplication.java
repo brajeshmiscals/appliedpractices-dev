@@ -12,7 +12,7 @@ public class InternshipApplication {
 	public static void main(String[] args) {
 
         SpringApplication.run(InternshipApplication.class, args);
-        logger.info("Hello Interns! welcome to main");
+        logger.info("Hello Interns! Welcome to main");
 	}
 
 }
