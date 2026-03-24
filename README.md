@@ -22,7 +22,3 @@ Reference repo: https://github.com/brajeshmiscals/appliedpractices-dev
 9. Create a script (bash) to run this project from command line. 
 
 10. Run the script using ./runner.sh
-
-11. Create .gtihub/workflow folder structure at root of your codebase
-
-12. Create a github-actions yaml file trigger the pipeline.
