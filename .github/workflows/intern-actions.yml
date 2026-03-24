@@ -1,5 +1,4 @@
-##We will use it for github-actions
-name: Show Branch
+name: Execute script and show branch
 
 on:
   push:
@@ -10,6 +9,15 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Make script executable
+        run: chmod +x test-runner.sh
+
+      - name: Run test script
+        run: ./test-runner.sh
+
       - name: Print branch
         run: echo "Branch is ${{ github.ref_name }}"
 
