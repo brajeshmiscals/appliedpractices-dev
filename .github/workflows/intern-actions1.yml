@@ -1,0 +1,28 @@
+name: Execute script and show branch1
+
+on:
+  push:
+  pull_request:
+
+jobs:
+  show-branch:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Make script executable
+        run: chmod +x test-script.sh
+
+      - name: Run test script
+        env:
+          USER_INPUT: "br@2jesh"
+        run: ./test-script.sh "$USER_INPUT"
+
+      - name: Print branch
+        run: echo "Branch is ${{ github.ref_name }}"
+
+      - name: Print PR source branch
+        if: github.event_name == 'pull_request'
+        run: echo "PR branch is ${{ github.head_ref }}"

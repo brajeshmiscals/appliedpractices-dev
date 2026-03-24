@@ -1,5 +1,4 @@
-##We will use it for github-actions
-name: Show Branch
+name: Execute script and show branch
 
 on:
   push:
@@ -10,6 +9,30 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Make script executable
+        run: chmod +x test-script.sh
+
+      # ✅ For PUSH events
+      - name: Run test script (push commit message)
+        if: github.event_name == 'push'
+        env:
+          USER_INPUT: ${{ github.event.head_commit.message }}
+        run: |
+          echo "Commit message: $USER_INPUT"
+          ./test-script.sh "$USER_INPUT"
+
+      # ✅ For PR events
+      - name: Run test script (PR title)
+        if: github.event_name == 'pull_request'
+        env:
+          USER_INPUT: ${{ github.event.pull_request.title }}
+        run: |
+          echo "PR title: $USER_INPUT"
+          ./test-script.sh "$USER_INPUT"
+
       - name: Print branch
         run: echo "Branch is ${{ github.ref_name }}"
 
