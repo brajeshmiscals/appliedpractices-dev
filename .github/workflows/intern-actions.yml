@@ -1,4 +1,4 @@
-name: Show Branch
+name: Execute script and show branch
 
 on:
   push:
@@ -22,7 +22,7 @@ jobs:
           USER_INPUT: ${{ github.event.head_commit.message }}
         run: |
           echo "Commit message: $USER_INPUT"
-          ./test-runner.sh "$USER_INPUT"
+          ./test-script.sh "$USER_INPUT"
 
       # ✅ For PR events
       - name: Run test script (PR title)
