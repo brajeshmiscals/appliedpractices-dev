@@ -1,4 +1,4 @@
-name: Execute script and show branch
+name: Show Branch
 
 on:
   push:
@@ -15,8 +15,23 @@ jobs:
       - name: Make script executable
         run: chmod +x test-runner.sh
 
-      - name: Run test script
-        run: ./test-runner.sh
+      # ✅ For PUSH events
+      - name: Run test script (push commit message)
+        if: github.event_name == 'push'
+        env:
+          USER_INPUT: ${{ github.event.head_commit.message }}
+        run: |
+          echo "Commit message: $USER_INPUT"
+          ./test-runner.sh "$USER_INPUT"
+
+      # ✅ For PR events
+      - name: Run test script (PR title)
+        if: github.event_name == 'pull_request'
+        env:
+          USER_INPUT: ${{ github.event.pull_request.title }}
+        run: |
+          echo "PR title: $USER_INPUT"
+          ./test-runner.sh "$USER_INPUT"
 
       - name: Print branch
         run: echo "Branch is ${{ github.ref_name }}"
