@@ -4,12 +4,21 @@ Repository for developer training
 Reference repo: https://github.com/brajeshmiscals/appliedpractices-dev
 
 1.Clone the repo: git clone https://github.com/brajeshmiscals/appliedpractices-dev.git (Create README.md and .gitignore files)
+
 2. Create a Spring-Boot project with web and DevTools and download as zip ( Use this portal to generate project: https://start.spring.io/ )
+
 3. Navigate to the root of clonned repo and extract downloaded code from step2 and remove the zip folder.
+
 4. Modify the main method/ create a controller (refer codelink above)
+
 5. Go to application.properties and define server.port (=9090)
+
 6. Build your project using maven (mvn clean install -DskipTests)
+
 7. Run your project from intellij. 
+
 8. Go to browser and hit : localhosts:9090/home, you should see the message defined in contoller class.
+
 9. Create a script (bash) to run this project from command line. 
+
 
