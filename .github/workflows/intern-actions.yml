@@ -1,0 +1,18 @@
+##We will use it for github-actions
+name: Show Branch
+
+on:
+  push:
+  pull_request:
+
+jobs:
+  show-branch:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Print branch
+        run: echo "Branch is ${{ github.ref_name }}"
+
+      - name: Print PR source branch
+        if: github.event_name == 'pull_request'
+        run: echo "PR branch is ${{ github.head_ref }}"
