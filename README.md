@@ -23,4 +23,6 @@ Reference repo: https://github.com/brajeshmiscals/appliedpractices-dev
 
 10. Run the script using ./runner.sh
 
+11. Create .gtihub/workflow folder structure at root of your codebase
 
+12. Create a github-actions yaml file trigger the pipeline.
