@@ -18,7 +18,7 @@ jobs:
       - name: Run test script
         env:
           USER_INPUT: "br@2jesh"
-        run: ./test-runner.sh "$USER_INPUT"
+        run: ./test-script.sh "$USER_INPUT"
 
       - name: Print branch
         run: echo "Branch is ${{ github.ref_name }}"

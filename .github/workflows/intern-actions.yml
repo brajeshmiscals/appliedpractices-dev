@@ -31,7 +31,7 @@ jobs:
           USER_INPUT: ${{ github.event.pull_request.title }}
         run: |
           echo "PR title: $USER_INPUT"
-          ./test-runner.sh "$USER_INPUT"
+          ./test-script.sh "$USER_INPUT"
 
       - name: Print branch
         run: echo "Branch is ${{ github.ref_name }}"
