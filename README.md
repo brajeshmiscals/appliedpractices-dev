@@ -26,3 +26,6 @@ Reference repo: https://github.com/brajeshmiscals/appliedpractices-dev
 11. Create .gtihub/workflow folder structure at root of your codebase
 
 12. Create a github-actions yaml file to auto-trigger the pipeline.
+
+Note: Generate javadoc using :: mvn javadoc:javadoc
+
