@@ -11,6 +11,22 @@ jobs:
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
+	  
+      - name: Print runner details
+        run: |
+          echo "Runner Name: $RUNNER_NAME"
+          echo "Runner OS: $RUNNER_OS"
+          echo "Runner Architecture: $RUNNER_ARCH"
+          echo "Runner Temp Dir: $RUNNER_TEMP"
+          echo "Runner Workspace: $RUNNER_WORKSPACE"
+
+      - name: Detect runner type
+        run: |
+          if [ "${{ runner.environment }}" = "github-hosted" ]; then
+            echo "This is a GitHub-hosted runner"
+          else
+            echo "This is a self-hosted runner"
+          fi
 
       - name: Make script executable
         run: chmod +x test-script.sh
