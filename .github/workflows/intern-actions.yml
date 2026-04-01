@@ -35,13 +35,13 @@ jobs:
         run: chmod +x test-script.sh
 
       # ✅ For PUSH events
-      - name: Run test script (push commit message)
+      - name: Run runner script (push commit message)
         if: github.event_name == 'push'
         env:
           USER_INPUT: ${{ github.event.head_commit.message }}
         run: |
           echo "Commit message: $USER_INPUT"
-          ./test-script.sh "$USER_INPUT"
+          ./runner.sh "$USER_INPUT"
 
       # ✅ For PR events
       - name: Run test script (PR title)
