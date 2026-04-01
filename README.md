@@ -29,3 +29,25 @@ Reference repo: https://github.com/brajeshmiscals/appliedpractices-dev
 
 Note: Generate javadoc using :: mvn javadoc:javadoc
 
+
+Run below commands to setup a self-hosted (linux runner)
+
+mkdir actions-runner && cd actions-runner
+
+curl -o actions-runner-linux-x64-2.333.1.tar.gz -L https://github.com/actions/runner/releases/download/v2.333.1/actions-runner-linux-x64-2.333.1.tar.gz
+
+echo "18f8f68ed1892854ff2ab1bab4fcaa2f5abeedc98093b6cb13638991725cab74  actions-runner-linux-x64-2.333.1.tar.gz" | shasum -a 256 -c actions-runner-linux-x64-2.333.1.tar.gz: OK
+
+tar xzf ./actions-runner-linux-x64-2.333.1.tar.gz
+
+./config.sh --url https://github.com/brajeshmiscals/appliedpractices-dev --token B7FXQBXBWNCNJXNRWUXZYOLJZS5T2
+
+You will be asked some questions, keep hitting enter to set default values. In the last hit: 
+
+./run.sh
+
+
+
+intern-actions.yml
+
+
