@@ -2,37 +2,44 @@
 
 # -----------------------------------------------------------------------------
 # Script Name : run-app.sh
-# Description : This script locates and runs a Spring Boot JAR file
-#               from the target directory.
+# Description : Builds a Spring Boot project using Maven and runs the JAR file
 #
 # Preconditions:
-#   - The project must be built using Maven.
-#   - A JAR file should exist in the target/ directory.
+#   - Maven must be installed and available in PATH
+#   - Java must be installed
 #
 # Usage:
 #   ./run-app.sh
 #
-# Example:
-#   ./run-app.sh
-#
 # Exit Codes:
 #   0 - Successful execution
-#   1 - JAR file not found
+#   1 - Build failed or JAR not found
 # -----------------------------------------------------------------------------
 
-echo "Running Spring Boot JAR..."
+echo "Starting build process..."
 
-# Find the first JAR file safely (avoids ls errors)
+# Step 1: Build the project
+mvn clean install -DskipTests
+
+# Check if build was successful
+if [[ $? -ne 0 ]]; then
+  echo "Error: Maven build failed."
+  exit 1
+fi
+
+echo "Build successful. Searching for JAR..."
+
+# Step 2: Find the JAR file
 JAR_FILE=$(find target -maxdepth 1 -name "*.jar" | head -n 1)
 
-# Check if JAR file exists
+# Step 3: Validate JAR existence
 if [[ -z "$JAR_FILE" ]]; then
-  echo "Error: No JAR found."
-  echo "Build the project first using: mvn clean install -DskipTests"
+  echo "Error: No JAR found in target/ directory."
   exit 1
 fi
 
 echo "Found JAR: $JAR_FILE"
 
-# Run the JAR
+# Step 4: Run the JAR
+echo "Running Spring Boot application..."
 java -jar "$JAR_FILE"
