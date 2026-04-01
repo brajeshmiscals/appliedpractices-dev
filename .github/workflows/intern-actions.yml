@@ -1,4 +1,4 @@
-name: Execute script and show branch
+name: Execute runner script and show branch
 
 on:
   push:
