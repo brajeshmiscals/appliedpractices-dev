@@ -1,4 +1,4 @@
-name: Execute test script and show branch
+name: Execute test script and show branch and verify user input
 
 on:
   push:
