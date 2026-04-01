@@ -45,9 +45,3 @@ tar xzf ./actions-runner-linux-x64-2.333.1.tar.gz
 You will be asked some questions, keep hitting enter to set default values. In the last hit: 
 
 ./run.sh
-
-
-
-intern-actions.yml
-
-
