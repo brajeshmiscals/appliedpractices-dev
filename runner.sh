@@ -2,18 +2,7 @@
 
 # -----------------------------------------------------------------------------
 # Script Name : run-app.sh
-# Description : Builds a Spring Boot project using Maven and runs the JAR file
-#
-# Preconditions:
-#   - Maven must be installed and available in PATH
-#   - Java must be installed
-#
-# Usage:
-#   ./run-app.sh
-#
-# Exit Codes:
-#   0 - Successful execution
-#   1 - Build failed or JAR not found
+# Description : Builds a Spring Boot project, runs the JAR, and stops it
 # -----------------------------------------------------------------------------
 
 echo "Starting build process..."
@@ -40,6 +29,21 @@ fi
 
 echo "Found JAR: $JAR_FILE"
 
-# Step 4: Run the JAR
-echo "Running Spring Boot application..."
-java -jar "$JAR_FILE"
+# Step 4: Run the JAR in background
+echo "Starting Spring Boot application..."
+java -jar "$JAR_FILE" > app.log 2>&1 &
+
+APP_PID=$!
+echo "Application started with PID: $APP_PID"
+
+# Step 5: Let it run for some time
+sleep 30
+
+# Step 6: Kill the application
+echo "Stopping application..."
+kill $APP_PID
+
+# Optional: wait for process to terminate
+wait $APP_PID 2>/dev/null
+
+echo "Application stopped successfully"
