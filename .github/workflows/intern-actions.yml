@@ -3,6 +3,7 @@ name: Execute script and show branch
 on:
   push:
   pull_request:
+  workflow_dispatch:
 
 jobs:
   show-branch:
