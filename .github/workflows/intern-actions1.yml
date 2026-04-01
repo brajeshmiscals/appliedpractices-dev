@@ -11,8 +11,9 @@ jobs:
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
-        
-        
+      - name: Identify workflow
+        run: echo "intern-actions1.yml"
+                
       - name: Print runner details
         run: |
           echo "Runner Name: $RUNNER_NAME"
