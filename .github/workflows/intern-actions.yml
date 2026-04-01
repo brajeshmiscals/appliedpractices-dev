@@ -32,7 +32,7 @@ jobs:
           fi
 
       - name: Make script executable
-        run: chmod +x test-script.sh
+        run: chmod +x runner.sh
 
       # ✅ For PUSH events
       - name: Run runner script (push commit message)
@@ -44,7 +44,7 @@ jobs:
           ./runner.sh "$USER_INPUT"
 
       # ✅ For PR events
-      - name: Run test script (PR title)
+      - name: Run runner script (PR title)
         if: github.event_name == 'pull_request'
         env:
           USER_INPUT: ${{ github.event.pull_request.title }}
