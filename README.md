@@ -45,3 +45,40 @@ tar xzf ./actions-runner-linux-x64-2.333.1.tar.gz
 You will be asked some questions, keep hitting enter to set default values. In the last hit: 
 
 ./run.sh
+
+
+Setup vault:
+
+Step 1: Download Vault
+Step3: set env var
+Step 2: Start Vault (Git Bash):
+export VAULT_ADDR='http://127.0.0.1:8200'
+./vault.exe server -dev
+Step3: Set Token:
+export VAULT_ADDR='http://127.0.0.1:8200'
+export VAULT_TOKEN='ur_token_value'
+Step4: Store Your Secrets:
+./vault.exe kv put secret/myapp PDF_PASSWORD=<ur_password>
+Step5: Verify:
+./vault.exe kv get secret/myapp
+
+Set env variable for vault:
+mkdir -p /c/temp/vault
+nano /c/temp/vault/pdf-config
+
+pdf.password=mySecret123
+pdf.path=/C/Users/brajesh.mishra/Downloads/paf_name.pdf
+
+
+Add env  variable: 
+Add Vault to PATH
+Move vault.exe to a directory like:
+C:\temp\vault -- Set this to env var in your machine
+
+vault kv put secret/myapp pdf.password=<ur_password> pdf.path=<ur_pdf_path>
+vault kv put secret/application pdf.password=<ur_password> pdf.path=<ur_pdf_path>
+
+
+Test with this:
+
+http://localhost:9090/vault
